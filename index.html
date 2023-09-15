@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    @font-face {
+      font-family: 'TinkoffSans';
+      src: url(../fonts/TinkoffSans.otf);
+    }
+    @font-face {
+      font-family: 'BetterVCR';
+      src: url(../fonts/better-vcr_0.ttf);
+    }
+    body {
+      font-family: 'BetterVCR';
+    }
+    .main-section {
+      position: relative;
+    }
+    .video-block {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: fixed;
+      z-index: 2;
+      width: 70%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .video-block video {
+      width: 100%;
+    }
+    .video-block h2 {
+      padding: 20px;
+      width: 95%;
+      font-size: 20px;
+      background: #fff;
+      border: none;
+      border-radius: 15px;
+      text-align: center;
+      -webkit-box-shadow: 0px 0px 15px 10px rgba(0, 0, 0, 0.2);
+      -moz-box-shadow: 0px 0px 15px 10px rgba(0, 0, 0, 0.2);
+      box-shadow: 0px 0px 15px 10px rgba(0, 0, 0, 0.2);
+    }
+    .row {
+      display: flex;
+      width: 100%;
+      height: 33.33%;
+    }
+    .gif-item {
+      width: 25%;
+      height: 100%;
+    }
+    .overlay {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: #333;
+      opacity: 0.9;
+    }
+  </style>
+  <body>
+    <section class="main-section">
+      <div class="video-block">
+        <h2>3D-игра "Симулятор рабочего дня оператора исходящей линии"</h2>
+        <video controls>
+          <source src="./media/screenCastGame.mp4" type="video/mp4" />
+        </video>
+      </div>
+      <div class="overlay"></div>
+    </section>
+    <script>
+      let rowOne = document.createElement('div');
+      let rowTwo = document.createElement('div');
+      let rowThree = document.createElement('div');
+      let rowFour = document.createElement('div');
+      let rowFive = document.createElement('div');
+      let rowSix = document.createElement('div');
+
+      function addRowToPage(rowItem, gifOne, gifTwo, gifThree, gifFour) {
+        rowItem.classList.add('row');
+        rowItem.innerHTML = `
+            <img class="gif-item" src="./media/${gifOne}.gif" alt="gif" />
+            <img class="gif-item" src="./media/${gifTwo}.gif" alt="gif" />
+            <img class="gif-item" src="./media/${gifThree}.gif" alt="gif" />
+            <img class="gif-item" src="./media/${gifFour}.gif" alt="gif" />
+        `;
+        document.querySelector('.main-section').prepend(rowItem);
+      }
+
+      addRowToPage(rowOne, 1, 2, 3, 4);
+      addRowToPage(rowTwo, 5, 6, 7, 8);
+      addRowToPage(rowThree, 9, 10, 11, 12);
+      addRowToPage(rowFour, 1, 2, 3, 4);
+      addRowToPage(rowFive, 5, 6, 7, 8);
+      addRowToPage(rowSix, 9, 10, 11, 12);
+    </script>
+  </body>
+</html>
